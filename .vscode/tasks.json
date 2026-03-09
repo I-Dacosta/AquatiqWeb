@@ -1,0 +1,15 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Type Check and Lint",
+			"type": "shell",
+			"command": "pnpm -v >/dev/null 2>&1 && pnpm lint || npm run lint || echo 'Lint skipped'; echo 'Type check (tsc)'; npx tsc -p tsconfig.json --noEmit || true",
+			"isBackground": false,
+			"problemMatcher": [
+				"$eslint-stylish"
+			],
+			"group": "build"
+		}
+	]
+}

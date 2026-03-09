@@ -1,26 +1,364 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "swiper/css";
+@import "swiper/css/a11y";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+html,
+body {
+  position: relative;
+  min-height: 100%;
 }
+
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-inter);
   --font-mono: var(--font-geist-mono);
+
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+
+  --color-destructive: var(--destructive);
+
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  --radius: 2rem;
+  /* Cinematic noise map opacity */
+  --noise-opacity: 0.05;
+  /* Aquatiq Brand Palette - nøyaktig fra designsystem */
+  --brand: #151F6C;
+  --aquatiq-blue: #151F6D;
+  --aquatiq-glaucous: #4E60AD;
+  --aquatiq-glaucous-light: #E3EBF2;
+  --aquatiq-blue-dark: #0D1444;
+  --aquatiq-orange: #F6AF6E;
+  --aquatiq-orange-light: #FDEAD8;
+  --aquatiq-dark: #333333;
+  --aquatiq-light: #ffffff;
+
+  /* App Theme (Aquatiq) - Off-black for premium contrast */
+  --background: var(--bg-premium-light);
+  --foreground: #1a1d1d;
+
+  /* Premium Backgrounds */
+  --bg-premium-light: #F6F6F6;
+  --bg-premium-dark: #0A0F2D;
+
+  --card: var(--aquatiq-light);
+  --card-foreground: #1a1d1d;
+
+  --popover: var(--aquatiq-light);
+  --popover-foreground: #1a1d1d;
+
+  --primary: var(--brand);
+  --primary-foreground: var(--aquatiq-light);
+
+  --secondary: var(--aquatiq-blue-dark);
+  --secondary-foreground: var(--aquatiq-light);
+
+  --muted: #e3ebf2;
+  --muted-foreground: #666666;
+
+  --accent: var(--aquatiq-orange);
+  --accent-foreground: #1a1d1d;
+
+  --destructive: #dc2626;
+
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: var(--aquatiq-blue);
+
+  --chart-1: var(--aquatiq-blue);
+  --chart-2: var(--aquatiq-blue-dark);
+  --chart-3: var(--aquatiq-orange);
+  --chart-4: var(--aquatiq-orange-light);
+  --chart-5: #e3ebf2;
+
+  --sidebar: var(--aquatiq-light);
+  --sidebar-foreground: #1a1d1d;
+  --sidebar-primary: var(--aquatiq-blue);
+  --sidebar-primary-foreground: var(--aquatiq-light);
+  --sidebar-accent: var(--aquatiq-blue-dark);
+  --sidebar-accent-foreground: var(--aquatiq-light);
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: var(--aquatiq-blue);
+
+  /* Slider / image-card tokens (premium) */
+  --slider-surface: #ffffff;
+  --slider-pill-bg: rgba(0, 0, 0, 0.45);
+  --slider-pill-text: rgba(255, 255, 255, 0.92);
+
+  /* Stor radius + myk skygge for premium bilde-kort */
+  --slider-radius: 2.5rem;
+  /* ~40px */
+  --slider-shadow: 0 40px 120px -80px rgba(0, 0, 0, 0.35);
+
+  /* Dots */
+  --slider-dot: rgba(0, 0, 0, 0.15);
+  --slider-dot-hover: rgba(0, 0, 0, 0.3);
+  --slider-dot-active: rgba(0, 0, 0, 0.7);
+}
+
+.dark {
+  /* Aquatiq dark */
+  --background: #1a1d1d;
+  --foreground: var(--aquatiq-light);
+
+  --card: #2a2a2a;
+  --card-foreground: var(--aquatiq-light);
+
+  --popover: #2a2a2a;
+  --popover-foreground: var(--aquatiq-light);
+
+  --primary: var(--aquatiq-glaucous);
+  --primary-foreground: var(--aquatiq-light);
+
+  --secondary: #444444;
+  --secondary-foreground: var(--aquatiq-light);
+
+  --muted: #444444;
+  --muted-foreground: #a3a3a3;
+
+  --accent: var(--aquatiq-tangerine);
+  --accent-foreground: var(--aquatiq-dark);
+
+  --destructive: oklch(0.704 0.191 22.216);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.553 0.013 58.071);
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: oklch(0.216 0.006 56.043);
+  --sidebar-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-accent: oklch(0.268 0.007 34.298);
+  --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.553 0.013 58.071);
+
+  /* Slider / image-card tokens (dark) */
+  --slider-surface: #2a2a2a;
+  --slider-pill-bg: rgba(0, 0, 0, 0.55);
+  --slider-pill-text: rgba(255, 255, 255, 0.92);
+  --slider-shadow: 0 40px 120px -80px rgba(0, 0, 0, 0.55);
+
+  --slider-dot: rgba(255, 255, 255, 0.16);
+  --slider-dot-hover: rgba(255, 255, 255, 0.28);
+  --slider-dot-active: rgba(255, 255, 255, 0.75);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    transition: background-color 0.7s ease, color 0.7s ease;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Universal smooth transitions for theme switching */
+  * {
+    transition: background-color 0.7s ease, border-color 0.7s ease, color 0.7s ease, fill 0.7s ease, stroke 0.7s ease;
+  }
+
+  h1,
+  h2,
+  .section-title {
+    @apply tracking-tight font-medium;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Swiper / slider styling */
+@layer utilities {
+
+  /* Viktig: vi vil at slides kan “poppe ut” uten å klippes */
+  .news-swiper {
+    overflow: visible;
+  }
+
+  .news-swiper .swiper-wrapper {
+    align-items: center;
+  }
+
+  /* Standard-state for alle slides */
+  .news-swiper .news-slide {
+    transition:
+      transform 650ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      opacity 650ms cubic-bezier(0.2, 0.8, 0.2, 1),
+      filter 650ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    transform: scale(0.86);
+    opacity: 0.45;
+    filter: saturate(0.92);
+    will-change: transform, opacity, filter;
+  }
+
+  /* Nabo-slides får litt mer “tilstedeværelse” */
+  .news-swiper .swiper-slide-prev.news-slide,
+  .news-swiper .swiper-slide-next.news-slide {
+    transform: scale(0.92);
+    opacity: 0.78;
+    filter: saturate(0.96);
+    z-index: 5;
+  }
+
+  /* Aktiv slide “løftes” */
+  .news-swiper .swiper-slide-active.news-slide {
+    transform: scale(1.25);
+    opacity: 1;
+    filter: saturate(1);
+    z-index: 10;
+  }
+
+  /* Premium kort-token (kan brukes hvis du vil flytte mer styling ut av TSX) */
+  .slider-card {
+    border-radius: var(--slider-radius);
+    box-shadow: var(--slider-shadow);
+    background: var(--slider-surface);
+    overflow: hidden;
+  }
+
+  .slider-pill {
+    background: var(--slider-pill-bg);
+    color: var(--slider-pill-text);
+    border-radius: 999px;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .slider-dot {
+    background: var(--slider-dot);
+  }
+
+  .slider-dot:hover {
+    background: var(--slider-dot-hover);
+  }
+
+  .slider-dot-active {
+    background: var(--slider-dot-active);
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .news-swiper .news-slide {
+      transition: none;
+    }
+  }
+}
+
+/* Partner-marquee: GPU-vennlig, enkel og stabil animasjon */
+@keyframes partner-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Standard: ingen animasjon før hover */
+.partner-marquee-track {
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Start animasjon ved hover (desktop) */
+.partner-marquee:hover .partner-marquee-track {
+  animation: partner-marquee 28s linear infinite;
+}
+
+/* Hvis brukeren ønsker redusert bevegelse: slå av animasjon */
+@media (prefers-reduced-motion: reduce) {
+  .partner-marquee:hover .partner-marquee-track {
+    animation: none !important;
+  }
+}
+
+
+/* Fade in animation for focus area videos */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@layer utilities {
+  .hover-lift {
+    @apply transition-transform hover:-translate-y-px;
+  }
+}
+
+/* View Transitions for Theme Toggle */
+::view-transition-group(root) {
+  animation-duration: 0.7s;
+  animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+::view-transition-new(root),
+::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }

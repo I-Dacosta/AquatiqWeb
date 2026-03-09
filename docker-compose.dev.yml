@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3000:3000"
+    environment:
+      # Database (from Aquatiq Root Container)
+      DATABASE_URI: postgresql://aquatiq:postgres@postgres:5432/aquatiq_dev
+      
+      # Payload CMS
+      PAYLOAD_SECRET: ${PAYLOAD_SECRET:-your-secret-here-change-in-production}
+      
+      # Shopify Configuration
+      NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN: ${NEXT_PUBLIC_SHOPIFY_STORE_DOMAIN}
+      NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN: ${NEXT_PUBLIC_SHOPIFY_STOREFRONT_TOKEN}
+      SHOPIFY_ADMIN_API_KEY: ${SHOPIFY_ADMIN_API_KEY}
+      SHOPIFY_ADMIN_API_SECRET: ${SHOPIFY_ADMIN_API_SECRET}
+      SHOPIFY_API_VERSION: ${SHOPIFY_API_VERSION:-2024-01}
+      
+      # Sync Secret
+      SYNC_SECRET: ${SYNC_SECRET}
+      
+      # OpenAI
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      
+      # Next.js
+      NEXT_PUBLIC_API_URL: http://localhost:3000
+      
+      # Redis (from Aquatiq Root Container - optional)
+      REDIS_URL: redis://:redis@redis:6379
+      
+      # MinIO (from Aquatiq Root Container - optional)
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: admin
+      MINIO_SECRET_KEY: aquatiq-minio-2024
+    
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    
+    networks:
+      - ima-local
+    
+    command: pnpm dev
+
+networks:
+  ima-local:
+    external: true
