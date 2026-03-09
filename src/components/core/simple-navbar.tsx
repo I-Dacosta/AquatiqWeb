@@ -88,8 +88,8 @@ export function SimpleNavbar() {
               className="flex flex-col gap-[5px] p-2 hover:opacity-70 transition-opacity relative z-20"
               aria-label="Menu"
             >
-              <div className={`w-[22px] h-[1px] transition-all duration-300 ${(isDark && !isScrolled && !isMenuOpen) ? 'bg-white' : 'bg-black'} ${isMenuOpen ? 'rotate-45 translate-y-[3px]' : ''}`}></div>
-              <div className={`w-[22px] h-[1px] transition-all duration-300 ${(isDark && !isScrolled && !isMenuOpen) ? 'bg-white' : 'bg-black'} ${isMenuOpen ? '-rotate-45 -translate-y-[3px]' : ''}`}></div>
+              <div className={`w-[22px] h-[1px] transition-all duration-300 ${(!isScrolled && !isMenuOpen) ? 'bg-white' : 'bg-black'} ${isMenuOpen ? 'rotate-45 translate-y-[3px]' : ''}`}></div>
+              <div className={`w-[22px] h-[1px] transition-all duration-300 ${(!isScrolled && !isMenuOpen) ? 'bg-white' : 'bg-black'} ${isMenuOpen ? '-rotate-45 -translate-y-[3px]' : ''}`}></div>
             </button>
 
             {/* Dropdown Menu Overlay */}
@@ -138,21 +138,21 @@ export function SimpleNavbar() {
                 >
                   <Link
                     href="/chemistry"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${!isScrolled ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Kjemi
                   </Link>
                   <Link
                     href="/analysis"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${!isScrolled ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Analyse
                   </Link>
                   <Link
                     href="/cleaning-systems"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${!isScrolled ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Rengjøringssystemer
@@ -165,7 +165,7 @@ export function SimpleNavbar() {
             <motion.div layout className="flex items-center relative z-10 shrink-0 px-2 lg:px-0">
               <Link href="/">
                 <Image
-                  src={(!isDark || isScrolled) ? "/images/logo/aquatiq-blue.png" : "/images/logo/aquatiq-white.png"}
+                  src={isScrolled ? "/images/logo/aquatiq-blue.png" : "/images/logo/aquatiq-white.png"}
                   alt="Aquatiq"
                   width={110}
                   height={36}
@@ -186,14 +186,14 @@ export function SimpleNavbar() {
                 >
                   <Link
                     href="/courses-audit"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${!isScrolled ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Kurs & Tilsyn
                   </Link>
                   <Link
                     href="/hygienic-process-solutions"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${!isScrolled ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Hygieniske Prosessløsninger
