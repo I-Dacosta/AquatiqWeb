@@ -138,21 +138,21 @@ export function SimpleNavbar() {
                 >
                   <Link
                     href="/chemistry"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white/90 hover:text-white" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Kjemi
                   </Link>
                   <Link
                     href="/analysis"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white/90 hover:text-white" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Analyse
                   </Link>
                   <Link
                     href="/cleaning-systems"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white/90 hover:text-white" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Rengjøringssystemer
@@ -186,14 +186,14 @@ export function SimpleNavbar() {
                 >
                   <Link
                     href="/courses-audit"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white/90 hover:text-white" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Kurs & Tilsyn
                   </Link>
                   <Link
                     href="/hygienic-process-solutions"
-                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white/90 hover:text-white" : "text-[#1C2026] hover:opacity-70"
+                    className={`text-[11px] tracking-[0.1em] uppercase font-medium transition-colors duration-300 ${(isDark && !isScrolled) ? "text-white hover:text-white/80" : "text-[#1C2026] hover:opacity-70"
                       }`}
                   >
                     Hygieniske Prosessløsninger
