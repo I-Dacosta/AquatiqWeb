@@ -192,16 +192,13 @@ export function ConferenceSection() {
             </span>
 
             <h2
-              className={`news-header-element text-5xl md:text-7xl lg:text-[86px] font-thin tracking-tighter leading-[0.88] transition-colors duration-700 ${isDark ? 'text-white' : 'text-[#1a1d1d]'}`}
+              className={`news-header-element text-5xl md:text-7xl lg:text-[86px] font-thin tracking-tighter leading-[0.88] transition-colors duration-700 ${isDark ? "text-white" : "text-[#1a1d1d]"}`}
             >
-              <span className="inline-flex items-end gap-[0.05em]">
-                <TitleWithLogo
-                  title="A"
-                  isDark={isDark}
-                  imageClassName="mr-[0.08em] h-[1.1em] w-[0.78em]"
-                />
-                <span>rrangementer</span>
-              </span>
+              <TitleWithLogo
+                title="A Events"
+                isDark={isDark}
+                imageClassName="mr-[0.08em] h-[1.1em] w-[1.8em]"
+              />
             </h2>
           </div>
 
