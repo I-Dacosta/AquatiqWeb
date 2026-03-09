@@ -90,20 +90,24 @@ function TitleWithLogo({
     );
   }
 
-  return (
-    <span className="inline-flex items-baseline gap-[0.1em]">
-      <span className={`relative shrink-0 ${imageClassName}`}>
-        <Image
-          src={isDark ? "/images/logo/white-a-logo.png" : "/images/logo/blue-a-logo.png"}
-          alt="A"
-          fill
-          className="object-contain scale-[1.95] origin-bottom"
-        />
-      </span>
-      <span>{title.slice(1)}</span>
-    </span>
-  );
-}
+          return (
+              <span className="relative right-9 inline-flex items-baseline">
+                <span className={`relative shrink-0 ${imageClassName}`}>
+                  <Image
+                    src={
+                      isDark
+                        ? "/images/logo/white-a-logo.png"
+                        : "/images/logo/blue-a-logo.png"
+                    }
+                    alt="A"
+                    fill
+                    className="object-contain scale-[0.9] origin-bottom"
+                  />
+                </span>
+                <span>{title.slice(1)}</span>
+              </span>
+            );
+          }
 
 export function ConferenceSection() {
   const { isDark } = useContext(ThemeContext);
